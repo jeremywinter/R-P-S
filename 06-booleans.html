@@ -34,8 +34,35 @@
       }
       */
 
+      if (0) {
+        console.log('truthy');
+      }
 
-      
+      const cartQty = 5;
+
+      if (cartQty) { // truthy values as a shortcut.
+        console.log('cart has products');
+      }
+
+      console.log(!0);
+
+      // ternary operator true ? 'truthy' : 'falsy';
+      // shortcut for an if statment
+      // can be used in a variable
+      const result = true ? 'truthy' : 'falsy';
+      console.log(result); 
+
+      // Gaurd operator 0 && 'HELLO'
+      // shortcut for an if statment
+      // can be used in a variable
+      const message =  false && 'hello';
+      console.log(message);
+
+      // Default operator, sets a default value
+      // shortcut for an if statment
+      // can be used in a variable
+      const currency = undefined || 'USD';
+      console.log(currency);
 
     </script>
   </body>

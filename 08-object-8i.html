@@ -14,23 +14,30 @@
     </button>
     <script>
 
+    let score = {
+      wins: 0,
+      losses: 0,
+    };
+
     function playGame(guess) {
       const randomNumber = Math.random();
-      let result;
+      const result = randomNumber < 0.5 ? 'heads' : 'tails';
 
-      if (randomNumber < 0.5) {
-        result = 'heads';
-      } else {
-        result = 'tails';
-      }
-
+      //updating score
       if (guess === result) {
-        alert('You win!');
-      } else {
-        alert('You win!');
+        score.wins ++ ;
+      } else { 
+        score.losses ++ ;
       }
+
+      let resultsMessage = guess === result ? 'You win!' : 'You lose';
+      let displayScore = `Wins: ${score.wins}, Losses ${score.losses}`;
+      
+      alert(`${resultsMessage}
+${displayScore}`);
     }
     
+
     </script>
   </body>
 </html>

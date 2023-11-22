@@ -8,16 +8,29 @@
       playGame('heads');
     ">heads
     </button>
+
     <button onclick="
       playGame('tails');
     ">tails
     </button>
+
+    <button onclick="
+      score.wins = 0;
+      score.losses = 0;
+      localStorage.removeItem(score);
+    ">Reset score</button>
+    
     <script>
 
+    let score = JSON.parse(localStorage.getItem('score')) || { 
+          wins: 0,
+          losses: 0,
+        };
+      /*
     let score = {
       wins: 0,
       losses: 0,
-    };
+    };*/
 
     function playGame(guess) {
       const randomNumber = Math.random();
@@ -35,6 +48,8 @@
       
       alert(`${resultsMessage}
 ${displayScore}`);
+
+      localStorage.setItem('score', JSON.stringify(score));
     }
     
 

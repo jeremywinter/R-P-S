@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM</title>
+    <style>
+      .red-button {
+        background-color: aqua; 
+      }
+     
+    </style>
+  </head>
+  <body>
+    <button>Hello</button>
+    <button class="js-button">Second BTN</button>
+
+    <script>
+      console.log(document.querySelector('button').innerHTML);
+
+      document.querySelector('button')
+        .innerHTML = 'Changed!!';
+
+     const buttonElement = document.querySelector('.js-button');
+      console.log(buttonElement);
+
+
+    /*
+      console.log(document.title);
+      document.title = 'changed';
+
+      console.log(document.body);
+      
+      document.body.innerHTML = 'hello';
+      document.title = 'Good job!';
+      */
+
+
+
+    </script>
+  </body>
+</html>

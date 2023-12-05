@@ -3,9 +3,6 @@
   <head>
     <title>DOM Projects</title>
     <style>
-      .red-button {
-        background-color: aqua; 
-      }
      
     </style>
   </head>
@@ -22,6 +19,7 @@
     <input class="js-cost" placeholder="Cost of order" onkeydown="
       handleCostKeydown(event);
     ">
+
     <button onclick="
       calulateTotal();
     ">Calulate</button>
@@ -30,6 +28,9 @@
 
     <script>
 
+      window.document
+      window.console.log('window');
+
       function handleCostKeydown(event) {
         if (event.key === 'Enter') {
         calulateTotal();
@@ -37,24 +38,17 @@
       }
 
       function calulateTotal() {
-        
+
         const inputElem = document.querySelector('.js-cost');
-        
         let cost = Number(inputElem.value); 
 
         if (cost < 40 ) {
           cost = cost + 10;
-        } else {
-
         }
-
-        document.querySelector('.js-total-cost').innerHTML = `$${cost}`
+      
+        document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
       }
 
-
-
-
-      
       function subscribe() {
         const buttonElement = document.querySelector('.js-subscribe-button');
 
@@ -65,16 +59,7 @@
         };
 
       }
-
-
-
-
-
-
-
-
       
-
     </script>
   </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM Projects 9a</title>
+    <style>
+     
+    </style>
+  </head>
+  <body>
+
+    <input class="js-name-input" placeholder="Your name">
+
+    <button class="js-button" onclick="
+      yourName();
+    ">Submit</button>
+
+    <p class="js-your-name"></p>
+  
+    <script>
+
+      function yourName() {
+        const inputElement = document.querySelector('.js-name-input');
+
+        document.querySelector('.js-your-name')
+          .innerHTML = `Your name is: ${inputElement.value}`;
+
+      }
+      
+    </script>
+  </body>
+</html>

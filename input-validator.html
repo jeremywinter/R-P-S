@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Input validator</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: .8em;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Input validator</p>
+
+    <input class="js-value-input" placeholder="Enter something"
+    onkeypress="handleKeydown(event);"
+    >
+
+    <button class="js-button" onclick="
+      yourValue();
+    ">Submit</button>
+
+    <p class="js-your-value"></p>
+  
+    <script>
+
+      function handleKeydown(event) {
+        if (event.key === 'Enter') {
+        yourValue();
+        }
+      }
+
+      // String or number validator
+      function yourValue() {
+        const inputElem = document.querySelector('.js-value-input');
+        let inputValue = String(inputElem.value);
+
+        if (inputValue === '') {
+          document.querySelector('.js-your-value')
+            .innerHTML = `Empty input`;
+        } else if (!isNaN(inputValue)) {
+          document.querySelector('.js-your-value')
+            .innerHTML = `You entered numbers: ${inputElem.value}`;
+        } else {
+          document.querySelector('.js-your-value')
+            .innerHTML = `You entered a string: ${inputElem.value}`;
+        }
+      }
+      
+    </script>
+  </body>
+</html>

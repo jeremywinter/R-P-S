@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>010 DOM project D</title>
+    <style>
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+
+     .toggle-button {
+      border: none;
+      cursor: pointer;
+      padding: 10px 16px;
+      margin: 0px 4px;
+      border-radius: 5px;
+      background-color: #dedede;
+      color: black;
+
+     }
+
+     .is-toggled {
+      background-color: black;
+      color: white;
+     }
+
+    </style>
+  </head>
+  <body>
+
+    <button class="js-button-1 toggle-button" onclick="
+      toggleButton('.js-button-1');
+    ">Gaming</button>
+
+    <button class="js-button-2 toggle-button" onclick="
+      toggleButton('.js-button-2');
+    ">Music</button>
+
+    <button class="js-button-3 toggle-button" onclick="
+      toggleButton('.js-button-3');
+    ">Tech</button>
+
+    <script>
+    
+    function toggleButton(selector) {
+
+      const buttonElem = document.querySelector(selector);
+
+      if (!buttonElem.classList.contains('is-toggled')) {
+        
+        buttonElem.classList.add('is-toggled'); // add styles when clicked
+
+      } else {
+
+        buttonElem.classList.remove('is-toggled');
+
+      }
+    }
+     
+    </script>
+  </body>
+</html>

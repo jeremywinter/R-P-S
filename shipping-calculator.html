@@ -5,8 +5,27 @@
     <style>
       body {
         font-family: Arial, Helvetica, sans-serif;
-        font-size: .8em;
       }
+
+      .cost-input{
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calulate-button{
+        background-color: rgb(0, 54, 161);
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        margin-left: 2px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      .calulate-button:hover{
+        background-color: green;
+      }
+
     </style>
   </head>
   <body>
@@ -15,11 +34,11 @@
     <p>Orders under $40 = +$10 shipping</p>
     <p>Orders over $40 = Free shipping</p>
 
-    <input class="js-cost" placeholder="Cost of order" onkeydown="
+    <input class="js-cost cost-input" placeholder="Cost of order" onkeydown="
       handleCostKeydown(event);
     ">
 
-    <button onclick="
+    <button class="calulate-button" onclick="
       calulateTotal();
     ">Calulate</button>
   

@@ -26,6 +26,10 @@
         background-color: green;
       }
 
+      .error-message {
+        color: red;
+      }
+
     </style>
   </head>
   <body>
@@ -43,6 +47,7 @@
     ">Calulate</button>
   
     <p class="js-total-cost"></p>
+    <p class="js-error-message error-message"></p>
 
     <script>
 
@@ -51,37 +56,56 @@
         calulateTotal();
         }
       }
-      
+    
+
       function calulateTotal() {
 
-      const inputElem = document.querySelector('.js-cost');
-      let cost = inputElem.value.trim(); // Fetching the string value
+        const inputElem = document.querySelector('.js-cost');
+        let cost = inputElem.value.trim(); // Fetching the string value
 
-      if (cost === '') {
-          document.querySelector('.js-total-cost') // checks for empty value
+        // resets messages
+        document.querySelector('.js-total-cost').innerHTML = '';
+        document.querySelector('.js-error-message').innerHTML = '';
+
+        // checks for empty value
+        if (cost === '') { 
+          document.querySelector('.js-error-message') 
             .innerHTML = 'Please enter the cost of your order.';
 
-          } else if (!isNaN(cost)) { // Checking if the input is a valid number
+          // Checking if the input is a valid number
+          } else if (!isNaN(cost)) { 
 
-            // Converting the valid string to a number 
-            // Convert the numbers to cents by * 100.
-            cost = Number(cost * 100); 
+            // Checking if the input is a valid number
+            if (cost < 0 ) {
+              document.querySelector('.js-error-message') 
+                .innerHTML = 'Error: cost cannot be less than $0';
 
-            if (cost < 4000) {
-            cost = cost + 1000;
-            } 
+              return;
 
+            } else {
+
+              // Converting the valid string to a number 
+              // Convert the numbers to cents by * 100.
+              cost = Number(cost * 100); 
+
+              if (cost < 4000) {
+              cost = cost + 1000;
+              } 
+
+            }
+            
             // Convert back to dollars at the end.
             document.querySelector('.js-total-cost')
               .innerHTML = `Total: $${cost / 100}`;
 
           } else {
+
             // Handle invalid input (non-numeric string)
-            document.querySelector('.js-total-cost') 
+            document.querySelector('.js-error-message') 
               .innerHTML = 'Please enter the cost of your order.';
           }  
-
       }
+
       
     </script>
   </body>

@@ -42,18 +42,27 @@
     ">Tech</button>
 
     <script>
-    
+    /*
+    first remove 'is-toggled' class from all buttons before adding it to
+    the clicked button
+    */
+
     function toggleButton(selector) {
+      
+      const buttons = document.querySelectorAll('.toggle-button');
+      
+      // Remove 'is-toggled' class from all buttons
+      buttons.forEach(buttons => {
+        if (buttons.classList.contains('is-toggled')) {
+          buttons.classList.remove('is-toggled');
+        }
+      });
 
       const buttonElem = document.querySelector(selector);
-
+      
+      // Add 'is-toggled' class only to the clicked button
       if (!buttonElem.classList.contains('is-toggled')) {
-        
-        buttonElem.classList.add('is-toggled'); // add styles when clicked
-
-      } else {
-
-        buttonElem.classList.remove('is-toggled');
+        buttonElem.classList.add('is-toggled'); 
 
       }
     }

@@ -11,10 +11,17 @@
       body {
         font-family: Arial, Helvetica, sans-serif;
         font-size: .8em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
 
       .wrapper {
         padding: 10px;
+        border:1px solid #dedede;
+        border-radius: 10px;
+        background-color: #eeeeee;
       }
   
       div button {
@@ -146,25 +153,74 @@
     </div>
 
     <script>
-
+/*
       let calculation = localStorage.getItem('calculation') || '';
       
+      // Maximum length to display in the container
+      const maxLength = 16;
+
       // displays the total on the page.
       showTotal();
 
       function updateCalculation(value) {
 
         calculation += value;
+
+        // displays the keypress before total
+        showTotal();
+
         localStorage.setItem('calculation', calculation);
 
       }
 
       function showTotal(){
 
-        document.querySelector('.show-total')
-          .innerHTML = `${calculation}`;
+        // Limit the displayed characters if the calculation exceeds maxLength
+        const displayValue = calculation.length > maxLength ? calculation.slice(-maxLength) : calculation;
+
+        //document.querySelector('.show-total')
+          //.innerHTML = calculation;
+
+          document.querySelector('.show-total').innerHTML = displayValue;
       
       }
+*/
+
+
+      let calculation = localStorage.getItem('calculation') || '';
+
+      // Maximum length to display in the container
+      const maxLength = 20;
+      const fontSizeThreshold = 16;
+
+      // displays the total on the page.
+      showTotal();
+
+      function updateCalculation(value) {
+        calculation += value;
+
+        // displays the keypress before total
+        showTotal();
+
+        localStorage.setItem('calculation', calculation);
+      }
+
+      function showTotal() {
+        const displayValue = calculation.length > maxLength ? calculation.slice(-maxLength) : calculation;
+
+        // Check if the displayed value is greater than the fontSizeThreshold
+        if (displayValue.length > fontSizeThreshold) {
+          document.querySelector('.show-total').style.fontSize = '10px';
+        
+        } else {
+          
+          // Reset font size if it's less than the threshold
+          document.querySelector('.show-total').style.fontSize = ''; 
+        }
+
+        document.querySelector('.show-total').textContent = displayValue;
+      }
+
    
     </script>
   </body>

@@ -1,10 +1,10 @@
 // orginal code
-/*
+
 const todoList = ['make dinner', 'wash dishes'];
 
 renderToDoList();
 
-function renderToDoList () {
+function renderToDoList() {
 
   let todoListHTML = '';
 
@@ -22,7 +22,6 @@ function renderToDoList () {
 
 }
 
-//const todoList2 = [];
 
 function addToDo() {
   
@@ -37,15 +36,18 @@ function addToDo() {
 
   console.log(todoList);
 }
-*/
 
+
+
+
+/*
 // console.log();
 // modified code to include a check for empty string
 const todoList = ['make dinner', 'wash dishes'];
 
 renderToDoList();
 
-function renderToDoList () {
+function renderToDoList() {
 
   let todoListHTML = '';
 
@@ -91,3 +93,4 @@ function handleKeydown(event) {
     addToDo();
   }
 }
+*/

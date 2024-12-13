@@ -65,9 +65,12 @@
 
         let cost = inputElem.value.trim(); // Fetching the string value
 
-        if (!isNaN(cost) && cost !== '') { // Checking if input is a valid number and not empty
+        if (cost.toLowerCase() === 'free') { // Check for "free" (case-insensitive)
+            document.querySelector('.js-total-cost')
+                .innerHTML = 'Your order is free of charge!';
+        } else if (!isNaN(cost) && cost !== '') { // Check if input is a valid number and not empty
             cost = Number(cost); // Convert the valid string to a number
-            
+
             if (cost === 0) { // Handle case when input is 0
                 document.querySelector('.js-total-cost')
                     .innerHTML = 'Please enter a valid cost greater than 0.';

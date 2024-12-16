@@ -6,45 +6,60 @@
      body {
       font-family: Arial, Helvetica, sans-serif;
      }
+     
+    .subscribe-button {
+      border: none;
+      border-radius: 50px;
+      background-color: #111111;
+      color: #f0f0f0;
+      margin-bottom: 30px;
+      padding: 10px 15px;
+      font-weight: bold;
+      font-size: 16px;
+      width: 110px;
+      cursor: pointer;
+      transition: width 300ms ease, background-color 300ms ease, color 300ms ease, opacity 300ms ease;
+      -webkit-transition: width 300ms ease, background-color 300ms ease, color 300ms ease, opacity 300ms ease;
+    }
 
-     .subscribe-button {
-        border: none;
-        border-radius: 50px;
-        background-color: black;
-        color: white;
-        margin-bottom: 30px;
-        padding: 10px 15px;
-        font-weight: bold;
-        font-size: 16px;
-        cursor: pointer;
-     }
-
-     .is-subscribed {
+    .is-subscribed {
       background-color: #f0f0f0;
-      color: black;
-     }
+      color: #111111;
+      opacity: 0;
+      width: 130px;
+      font-size: 17px;
+      animation: fade-in 300ms ease forwards;
+    }
 
-      .cost-input{
-        font-size: 15px;
-        padding: 10px;
+    @keyframes fade-in {
+      0% {
+          opacity: 0;
       }
-
-      .calculate-button{
-        background-color: rgb(32, 0, 128);
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        margin-left: 2px;
-        font-size: 15px;
-        cursor: pointer;
-        transition: background-color 300ms ease;
-        -webkit-transition: background-color 300ms ease; /* For older Safari */
+      100% {
+          opacity: 1;
       }
+    }
 
-      .calculate-button:hover{
-        background-color: green;
-      }
+    .cost-input{
+      font-size: 15px;
+      padding: 10px;
+    }
 
+    .calculate-button{
+      background-color: rgb(32, 0, 128);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-left: 2px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background-color 300ms ease;
+      -webkit-transition: background-color 300ms ease; /* For older Safari */
+    }
+
+    .calculate-button:hover{
+      background-color: green;
+    }
     </style>
   </head>
   <body>

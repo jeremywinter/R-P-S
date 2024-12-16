@@ -59,7 +59,7 @@
     ">
 
     <button class="calulate-button" onclick="
-      calulateTotal();
+      calculateTotal();
     ">Calulate</button>
   
     <p class="js-total-cost"></p>
@@ -71,29 +71,36 @@
 
       function handleCostKeydown(event) {
         if (event.key === 'Enter') {
-        calulateTotal();
+        calculateTotal();
         }
       }
 
-      function calulateTotal() {
+      function calculateTotal() {
+        const inputElem = document.querySelector('.js-cost');
 
-      const inputElem = document.querySelector('.js-cost');
+        let cost = inputElem.value.trim(); // Fetching the string value
 
-      let cost = inputElem.value.trim(); // Fetching the string value
+        if (cost.toLowerCase() === 'free') { // Check for "free" (case-insensitive)
+            document.querySelector('.js-total-cost')
+                .innerHTML = 'Your order is free of charge!';
+        } else if (!isNaN(cost) && cost !== '') { // Check if input is a valid number and not empty
+            cost = Number(cost); // Convert the valid string to a number
 
-        if (!isNaN(cost)) { // Checking if the input is a valid number
-          cost = Number(cost); // Converting the valid string to a number
-
-          if (cost < 40) {
-          cost = cost + 10;
-          } 
-          document.querySelector('.js-total-cost')
-            .innerHTML = `$${cost}`;
-        } else {
-          // Handle invalid input (non-numeric string)
-          document.querySelector('.js-total-cost') 
-            .innerHTML = 'Please enter the cost of your order.';
-        }      
+            if (cost === 0) { // Handle case when input is 0
+                document.querySelector('.js-total-cost')
+                    .innerHTML = 'Please enter a valid cost greater than 0.';
+            } else if (cost < 40) { // Add $10 shipping for costs below $40
+                cost += 10;
+                document.querySelector('.js-total-cost')
+                    .innerHTML = `Total cost: $${cost}`;
+            } else { // Display cost without additional charges
+                document.querySelector('.js-total-cost')
+                    .innerHTML = `Total cost: $${cost}`;
+            }
+        } else { // Handle invalid input (non-numeric or empty)
+            document.querySelector('.js-total-cost')
+                .innerHTML = 'Please enter a valid numeric cost.';
+        }
       }
 
       function subscribe() {

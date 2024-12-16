@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Hover Animation</title>
+    <style>
+        .calculate-button {
+            background-color: rgb(32, 0, 128);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin-left: 2px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 1.2s ease;
+        }
+
+        .calculate-button:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <button class="calculate-button">Calculate</button>
+    <script>
+      const button = document.querySelector('.calculate-button');
+
+      button.addEventListener('mouseenter', () => {
+          console.log('Hover ON:', getComputedStyle(button).backgroundColor);
+      });
+
+      button.addEventListener('mouseleave', () => {
+          console.log('Hover OFF:', getComputedStyle(button).backgroundColor);
+      });
+    </script>
+</body>
+</html>

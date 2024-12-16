@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>DOM Projects</title>
     <style>
@@ -29,7 +29,7 @@
         padding: 10px;
       }
 
-      .calulate-button{
+      .calculate-button{
         background-color: rgb(32, 0, 128);
         color: white;
         border: none;
@@ -37,8 +37,11 @@
         margin-left: 2px;
         font-size: 15px;
         cursor: pointer;
+        transition: background-color 300ms ease;
+        -webkit-transition: background-color 300ms ease; /* For older Safari */
       }
-      .calulate-button:hover{
+
+      .calculate-button:hover{
         background-color: green;
       }
 
@@ -58,9 +61,9 @@
       handleCostKeydown(event);
     ">
 
-    <button class="calulate-button" onclick="
+    <button class="calculate-button" onclick="
       calculateTotal();
-    ">Calulate</button>
+    ">Calculate</button>
   
     <p class="js-total-cost"></p>
 

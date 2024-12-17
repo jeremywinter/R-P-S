@@ -1,6 +1,13 @@
 // orginal code
 
-const todoList = ['make dinner', 'wash dishes'];
+const todoList = [{
+  name: 'wash car',
+  dueDate: '01-02-2024',
+  }, {
+    name: 'change oil',
+    dueDate: '01-03-2024',
+  }
+];
 
 renderToDoList();
 
@@ -10,87 +17,60 @@ function renderToDoList() {
 
   for (let i = 0; i < todoList.length; i++) {
   
-    const todo = todoList[i];
-    const html = `<p>${todo}</p>`;
+    const todoObject = todoList[i];
+    //const name = todoObject.name;
+    //const dueDate = todoObject.dueDate;
+    const { name, dueDate } = todoObject;
+    
+    const html = `
+      <div>
+        ${name}
+      </div>
+      <div>
+        ${dueDate}
+      </div>
+      <button onclick="
+        todoList.splice(${i}, 1);
+        renderToDoList();
+      ">Delete</button>
+    `;
     todoListHTML += html;
   
   }
-  
-  // console.log(todoListHTML);
   
   document.querySelector('.js-todo-list').innerHTML = todoListHTML;
 
 }
 
-
 function addToDo() {
   
   const inputElem = document.querySelector('.js-name-input');
+  const dateInputElem = document.querySelector('.js-due-date-input');
 
-  const name = inputElem.value;
-
-  // adds item to the todoList array
-  todoList.push(name);
-  inputElem.value = '';
-  renderToDoList();
-
-  console.log(todoList);
-}
-
-
-
-
-/*
-// console.log();
-// modified code to include a check for empty string
-const todoList = ['make dinner', 'wash dishes'];
-
-renderToDoList();
-
-function renderToDoList() {
-
-  let todoListHTML = '';
-
-  for (let i = 0; i < todoList.length; i++) {
-  
-    const todo = todoList[i];
-    const html = `<p>${todo}</p>`;
-    todoListHTML += html;
-  
-  }
-  
-  console.log(todoListHTML);
-  
-  document.querySelector('.js-todo-list').innerHTML = todoListHTML;
-
-}
-
-
-function addToDo() {
-  
-  const inputElem = document.querySelector('.js-name-input');
   const name = inputElem.value.trim();
+  const dueDate = dateInputElem.value.trim();
 
-  // check for an empty value before adding it 
-  if (name !== '') {
-
-  // adds item to the todoList array
-  todoList.push(name);
-  console.log(todoList);
-  renderToDoList();
+  if (name !== '') { // modified code to include a check for empty string
+    
+    todoList.push({ // adds item to the todoList array
+      // name: name,
+      // dueDate: dueDate,
+      name,
+      dueDate
+    });
+    inputElem.value = '';
+    renderToDoList();
 
   } else {
-
     console.log('empty value');
-
-  }
-
-}
-
-// handles keydown event for the input field
-function handleKeydown(event) {
-  if (event.key === 'Enter') {
-    addToDo();
+    alert('Enter a to-do item');
   }
 }
-*/
+
+function handleKeydown(e) { // handles keydown event for the input field
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    console.log('keydown prevented');
+    alert('Enter a to-do item');
+  }
+}
